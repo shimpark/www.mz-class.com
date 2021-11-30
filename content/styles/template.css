@@ -11,6 +11,7 @@ body {
 	font-family: "Noto Sans Korean", "Malgun Gothic", "돋움", "dotum", "AppleGothic", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1;
+    color: #101010;
 }
 
 @media screen and (max-width: 1199.98px) {
@@ -851,6 +852,9 @@ font style
 }
 
 @media screen and (max-width: 575.98px) {
+    .fs44 {
+        font-size: 1.8rem;
+    }
     .fs22,
     .fs20 {
         font-size: 1.2rem;
@@ -911,6 +915,7 @@ font style
 .txt-indent {
     position: relative;
 }
+.txt-indent::before,
 .txt-indent .mark {
     position: absolute;
     top: 0;
@@ -954,6 +959,9 @@ color palatte
 .fc-white {
     color: #fff !important;
 }
+.fc-red {
+    color: #e92c2c !important;
+}
 .fc-orange {
     color: #ff5100 !important;
 }
@@ -979,7 +987,7 @@ color palatte
     color: #999 !important;
 }
 .fc-black {
-    color: #000 !important;
+    color: #101010 !important;
 }
 /* background color
 ==========================================================*/
@@ -1005,7 +1013,7 @@ color palatte
     background-color: #5f3cdf !important
 }
 .black {
-    background-color: #000 !important;
+    background-color: #101010 !important;
 }
 
 /*==========================================================
@@ -1042,8 +1050,11 @@ body.full {
     z-index: 200;
 }
 [class^="modal-wrap__"] {
+    overflow-y: hidden;
     position: relative;
+    padding: 1.25rem;
     background-color: #fff;
+    border-radius: 0.75rem;
     z-index: 1;
 }
 .modal-wrap__rlt {
@@ -1056,70 +1067,26 @@ body.full {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-[class^="modal-wrap__"] > .close-modal-btn {
-    overflow: hidden;
-    position: absolute;
-    top: 1.75rem;
-    right: 1.75rem;
-    width: 1.9rem;
-    height: 1.9rem;
-}
-[class^="modal-wrap__"] > .close-modal-btn::before,
-[class^="modal-wrap__"] > .close-modal-btn::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 4px;
-    background-color: #000;
-}
-[class^="modal-wrap__"] > .close-modal-btn::before {
-    -webkit-transform: translate(-50%, -50%) rotate(45deg);
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-[class^="modal-wrap__"] > .close-modal-btn::after {
-    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
-    transform: translate(-50%, -50%) rotate(-45deg);
+.modal-wrap__720 {
+    max-width: 720px;
+    width: 720px;
 }
 .modal-hd {
-    padding: 5rem 3rem 3rem;
+    padding: 1.75rem 0;
     text-align: center;
 }
 .modal-hd-tit {
-    line-height: 1.3;
-}
-.modal-hd-txt {
-    padding-top: 2.5rem;
-    line-height: 1.6;
-}
-.modal-cont {
-    padding: 0 3rem 5rem;
-}
-.modal-cont-txt {
-    padding: 0.5rem 0;
-    text-align: center;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 @media screen and (max-width: 575.98px) {
     .modal-wrap__rlt {
         margin: 0 auto;
+        min-height: 100vh;
+        border-radius: 0;
     }
-    [class^="modal-wrap__"] > .close-modal-btn {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-    [class^="modal-wrap__"] > .close-modal-btn::before,
-    [class^="modal-wrap__"] > .close-modal-btn::after {
-        height: 2px;
-    }
-    .modal-hd {
-        padding: 6rem 20px 3rem;
-    }
-    .modal-cont {
-        padding-left: 20px;
-        padding-right: 20px;
+    .modal-wrap__720 {
+        width: 100%;
     }
 }
 
@@ -1142,6 +1109,175 @@ movie
 }
 
 /*==========================================================
+form
+==========================================================*/
+/* form layout
+==========================================================*/
+.form-wrap + .form-wrap {
+    padding-top: 0.5rem;
+}
+.form-row {
+    padding: 0.4rem 0;
+}
+
+@media screen and (max-width: 575.98px) {
+    .form-wrap + .form-wrap {
+        padding-top: 0.75rem;
+    }
+    .form-row {
+        padding: 0.75rem 0;
+    }
+}
+/* form element
+==========================================================*/
+.form-el-box {
+    position: relative;
+}
+
+[class^="form-el-label__"] {
+    font-size: 0.8rem;
+    color: #c4c4c4;
+}
+.form-el-label__input-txt {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+[class^="form-el-mark__"] {
+    display: none;
+}
+.form-el-mark__correct {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 1rem;
+}
+.form-el-mark__wrong {
+    padding-top: 0.4rem;
+    font-size: 0.8rem;
+    color: #e92c2c;
+}
+
+[class^="form-el__"] {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 100%;
+    font-size: 0.8rem;
+    border: 1px solid #c4c4c4;
+    border-radius: 0.4rem;
+}
+.form-el__input-txt {
+    height: 2.75rem;
+    line-height: 2.75rem;
+}
+.form-el__term {
+    overflow-y: scroll;
+    padding: 0.5rem 0.75rem;
+    height: 4.25rem;
+    line-height: 1.4;
+}
+.form-el__term .txt-indent {
+    padding-left: 0.75rem;
+}
+.form-el__term .txt-indent::before {
+    content: "";
+    top: 0.5rem;
+    width: 5px;
+    height: 5px;
+    background-color: #111;
+    border-radius: 100%;
+}
+
+[class^="form-chk__"] input {
+    overflow: hidden;
+    position: absolute;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+    -webkit-appearance: auto;
+    appearance: auto;
+    border: 0;
+}
+.form-chk__rect {
+    position: relative;
+}
+.form-chk__rect .form-chk-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    outline: none;
+}
+.form-chk__rect .form-chk-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-image: url("../images/form-ico-checkbox-unchecked.png");
+    box-sizing: border-box;
+}
+.form-chk__rect input:checked + .form-chk-label::before {
+    background-image: url("../images/form-ico-checkbox-checked.png");
+}
+
+@media screen and (max-width: 575.98px) {
+    [class^="form-el-label__"] {
+        font-size: 1.15rem;
+    }
+    .form-el-label__input-txt {
+        left: 1.5rem;
+    }
+    .form-el-mark__correct {
+        right: 1.5rem;
+        width: 1.5rem;
+    }
+    .form-el-mark__wrong {
+        padding-top: 1rem;
+        font-size: 1.15rem;
+    }
+    [class^="form-el__"] {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: 1.15rem;
+        border-radius: 0.75rem;
+    }
+    .form-el__input-txt {
+        height: 4rem;
+        line-height: 4rem;
+    }
+    .form-el__term {
+        padding: 1rem 1.5rem;
+        height: 8rem;
+    }
+    .form-el__term .txt-indent {
+        padding-left: 1rem;
+    }
+    .form-chk__rect .form-chk-label {
+        padding-left: 2rem;
+        font-size: 1.15rem;
+    }
+    .form-chk__rect .form-chk-label::before {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/*==========================================================
 pagination
 ==========================================================*/
 [class^="pagination__"] {
@@ -1154,8 +1290,29 @@ pagination
 [class^="paging-btn__"] {
     display: inline-block;
     text-align: center;
-    border-width: 2px;
     border-style: solid;
+}
+.paging-btn__modal {
+    padding: 0.75rem 0;
+    font-size: 0.7rem;
+    border-width: 1px;
+    border-radius: 0.4rem;
+}
+.paging-btn__modal.primary {
+    color: #fff;
+    background-color: #4e37cb;
+    border-color: #4e37cb;
+}
+.paging-btn__modal.ghost {
+    color: #c4c4c4;
+    border-color: #c4c4c4;
+}
+
+@media screen and (max-width: 575.98px) {
+    .paging-btn__modal {
+        padding: 1.25rem 0;
+        font-size: 1.2rem;
+    }
 }
 /* index type
 ==========================================================*/
@@ -1181,6 +1338,16 @@ pagination
 }
 .paging-arw-next {
     margin-left: 1.5rem;
+}
+
+@media screen and (max-width: 575.98px) {
+    .paging-idx {
+        margin: 0 1rem;
+        font-size: 1.2rem;
+    }
+    [class^="paging-arw"] {
+        width: 2rem;
+    }
 }
 
 /*==========================================================
@@ -1274,13 +1441,13 @@ faq
 
 @media screen and (max-width: 575.98px) {
     [class^="faq-q"] {
-        padding-right: 2.5rem;
+        padding-right: 3rem;
         line-height: 1.7;
     }
     [class^="faq-q"]::after {
-        top: 1rem;
+        top: 0.8rem;
         right: 1rem;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
     .faq-ntc-tit {
         background-position: left top 6px;
@@ -1304,39 +1471,54 @@ faq
 /*==========================================================
 policy
 ==========================================================*/
+.policy-area {
+    padding: 10rem 0;
+}
 .policy-wrap {
-    line-height: 1.7;
+    padding-top: 2rem;
+    line-height: 1.5;
 }
 .policy-hd-tit {
-    padding: 5rem 0 1.5rem;
+    padding-bottom: 0.75rem;
 }
-.policy-sub-tit {
-    display: block;
-    padding: 1.5rem 0 0.5rem;
+.policy-txt {
+    color: #666;
+}
+.policy-txt.txt-indent {
+    padding-left: 1.5rem;
 }
 .policy-wrap a {
     border-bottom: 1px solid #000;
 }
+
 .policy-tbl {
-    margin: 3rem 0;
+    margin: 1rem 0;
     width: 100%;
-}
-.policy-tbl caption {
-    display: table-caption;
-    margin-bottom: 1rem;
-    text-align: left;
 }
 .policy-tbl th,
 .policy-tbl td {
-    padding: 0.75rem 1.5rem;
-    font-weight: 400;
+    padding: 0.5rem 1.5rem;
+    color: #111;
+    border: 1px solid #111;
     vertical-align: middle;
 }
 .policy-tbl thead th {
-    font-weight: 400;
-    background-color: #f5f5f5;
+    text-align: left;
 }
 .policy-tbl tbody th,
 .policy-tbl tbody td {
-    border-bottom: 1px solid #d9d9d9;
+    border: 1px solid #111;
+}
+
+@media screen and (max-width: 575.98px) {
+    .policy-area {
+        padding-top: 18rem;
+    }
+    .policy-wrap {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .policy-txt.txt-indent {
+        padding-left: 1.75rem;
+    }
 }

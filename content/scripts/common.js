@@ -21,6 +21,9 @@ var mqNotWeb = window.matchMedia("screen and (max-width: 1199.98px)");
 var mqPad = window.matchMedia("screen and (max-width: 991.98px)");
 var mqMobile = window.matchMedia("screen and (max-width: 576.98px)");
 
+//etc value
+var english = /^[A-Za-z0-9]*$/;
+
 $(document).ready(function(){
     //navigation toggle event
     tglNav();
@@ -67,7 +70,7 @@ function openModal(modalID) {
 
     $("body").addClass("full");
     modalArea.not(thisModal).hide();
-    thisModal.fadeIn(250);
+    thisModal.fadeIn(250).scrollTop(0);
 }
 //close modal event
 function closeModal(modalID) {
@@ -75,6 +78,94 @@ function closeModal(modalID) {
 
     $("body").removeClass("full");
     thisModal.fadeOut(250);
+}
+//close modal event when click background
+function closeModalBg() {
+    var modalArea = $(".modal-area");
+
+    modalArea.on("click", function (e) {
+        if (!$(e.target).closest(modalWrap).length) {
+            $("html").removeClass("full");
+            $(this).fadeOut(150);
+        }
+    });
+}
+
+//form event
+function formEvent() {
+
+    $("[class^='form-el__']").each(function(){
+        $(this).on("click", function(){
+            $(window).scrollTop(0);
+        });
+    });
+    
+    $(".form-el__input-txt").on('keyup', function() {
+        $(".modal-area").scrollTop(100);
+        if ( this.value.length > 0 ) {
+            $(this).siblings(".form-el-label__input-txt").hide();
+        }
+        if ( this.value.length < 1 ) {
+            $(this).siblings(".form-el-label__input-txt").show();
+        }
+    });
+    $(".form-el__input-txt").on('focusout', function() {
+        if ( this.value.length > 0 ) {
+            $(this).parents(".form-el-box").next(".form-el-mark__wrong").hide();
+        }
+        if ( this.value.length < 1 ) {
+            $(this).parents(".form-el-box").next(".form-el-mark__wrong").text("필수항목 입니다.").show();
+        }
+    });
+
+   $(".form-el__input-txt[type='text']").on('keyup', function() {
+        var inputTxtVal = $(this).val();
+
+        if ( this.value.length > 2 && ! $.isNumeric(inputTxtVal) ) {
+            $(this).next(".form-el-mark__correct").show();
+        } else {
+            $(this).next(".form-el-mark__correct").hide();
+        }
+    });
+
+    
+    $(".form-el__input-txt[type='email']").on('keyup', function() {
+        var inputMailVal = $(this).val();
+
+        if ( this.value.length > 5 && ! english.test(inputMailVal) && inputMailVal.indexOf("@") > -1 && inputMailVal.indexOf(".") > -1 ) {
+            $(this).next(".form-el-mark__correct").show();
+        } else {
+            $(this).next(".form-el-mark__correct").hide();
+        }
+    });
+    $(".form-el__input-txt[type='email']").on('focusout', function(){
+        var inputMailVal = $(this).val();
+
+        if ( this.value.length < 1 ) {
+            $(this).parents(".form-el-box").next(".form-el-mark__wrong").text("필수항목 입니다.").show();
+        } else if ( this.value.length > 5 && ! english.test(inputMailVal) && inputMailVal.indexOf("@") > -1 && inputMailVal.indexOf(".") > -1 ) {
+            $(this).parents(".form-el-box").next(".form-el-mark__wrong").hide();
+        } else {
+            $(this).parents(".form-el-box").next(".form-el-mark__wrong").text("입력하신 이메일 주소를 다시 확인해주세요.").show();
+        }
+    });
+}
+//unvalid submit button event
+function unvalidSubmitBtn(thisSubmitBtn) {
+    $(thisSubmitBtn).addClass("unvalid").delay(800).queue(function(){
+        $(thisSubmitBtn).removeClass("unvalid");
+    });
+}
+//click alert button event
+function clickAlertBtn() {
+    $(".paging-btn__modal").on("click", function(){
+        $(".alert-wrap").addClass("active");
+        setTimeout(function(){
+            $(".alert-wrap").removeClass("active");
+            $("body").removeClass("full");
+            $("#modalAlert").fadeOut(250);
+        }, 1600);
+    });
 }
 
 //scroll animation event
@@ -111,9 +202,8 @@ function classEvent() {
             var thisAnchorTop = $(this).offset().top;
             var thisAnchorIdx = $(this).attr("data-anchorIdx");
 
-            if(windowST > thisAnchorTop - 100) {
+            if(windowST > thisAnchorTop - 250) {
                 $("[class^='anchor-menu__']").removeClass("active");
-
                 $(".anchor-menu-bar").find("li").eq(thisAnchorIdx).find("[class^='anchor-menu__']").addClass("active");
             }
             if(windowST == 0) {
@@ -171,9 +261,5 @@ function mainParallax() {
         $(".main-ico__intro-circ").parallax(-80, e);
         $(".main-ico__intro-star").parallax(120, e);
     });
-
-}
-//main gate slider
-function mainGateSlider() {
 
 }

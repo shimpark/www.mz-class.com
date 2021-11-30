@@ -214,6 +214,11 @@ visual
     padding-top: 0.75rem;
 }
 
+@media screen and (max-width: 1440.98px) {
+    .main-tit__vsl {
+        width: 35rem;
+    }
+}
 @media screen and (max-width: 575.98px) {
     .main-tit__vsl {
         margin-bottom: 3.5rem;
@@ -295,6 +300,15 @@ visual
     animation: scrollDownArrow 1s 1.5s infinite linear;
 }
 
+@media screen and (max-width: 1440.98px) {
+    .main-ico__vsl-star.greenstar {
+        top: 12.5%;
+    }
+    .main-ico__vsl-star.bluestar {
+        top: 12%;
+        left: 65%;
+    }
+}
 @media screen and (max-width: 1024.98px) {
     .main-ico__vsl-circ {
         width: 16%;
@@ -406,6 +420,12 @@ gate
     border-radius: 2rem;
 }
 
+@media screen and (max-width: 1440.98px) {
+    .main-gate-card {
+        margin: 0 auto;
+        width: 80%;
+    }
+}
 @media screen and (max-width: 1366.98px) {
     .main-gate-list li {
         margin: 0 2%;
@@ -598,6 +618,37 @@ intro
     animation-delay: 0.25s;
 }
 
+@media screen and (max-width: 1440.98px) {
+    .main-ico__intro-copy.manager {
+        top: 12%;
+        left: 13.35%;
+    }
+    .main-ico__intro-copy.newcomer {
+        top: 13%;
+    }
+    .main-ico__intro-copy.intern {
+        left: 6.5%;
+    }
+    .main-ico__intro-copy.head {
+        left: 73.5%;
+    }
+    .main-ico__intro-copy.exag {
+        top: 85%;
+        left: 14.5%;
+    }
+    .main-ico__intro-copy.life {
+        left: 67%;
+    }
+    .main-ico__intro-circ.purplecirc.top {
+        top: 6.5%;
+    }
+    .main-ico__intro-circ.bluecirc {
+        top: 15%;
+    }
+    .main-ico__intro-circ.greencirc {
+        top: 7.5%;
+    }
+}
 @media screen and (max-width: 1024.98px) {
     .main-ico__intro-copy {
         width: 35%;
@@ -870,6 +921,24 @@ faq
     width: 22.66%;
 }
 
+@media screen and (max-width: 1440.98px) {
+    .main-ico__faq-star.greenstar {
+        left: 8%;
+    }
+    .main-ico__faq-star.bluestar {
+        right: 3%;
+    }
+    .main-ico__faq-star.redstar.top {
+        top: 5%;
+    }
+    .main-ico__faq-star.redstar.btm {
+        left: 2%;
+    }
+    .main-ico__faq-shape {
+        bottom: -8.5%;
+        width: 19.5%;
+    }
+}
 @media screen and (max-width: 575.98px) {
     .main-ico__faq-star {
         width: 10% !important;
