@@ -227,9 +227,23 @@ navigation
     display: inline-block;
     width: 10.625rem;
 }
-.nav-ci__corp {
+.nav-ci__corp { /* 1207 zoe 수정 */
+    position: relative;
     display: inline-block;
     width: 8.375rem;
+}
+[class^="nav-ci-corplink__"] { /* 1207 zoe 추가 */
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+.nav-ci-corplink__lt { /* 1207 zoe 추가 */
+    left: 0;
+    width: 34.11%;
+}
+.nav-ci-corplink__rt { /* 1207 zoe 추가 */
+    right: 0;
+    width: 49.16%;
 }
 .nav-txt__info {
     padding: 1.25rem 0;
@@ -280,8 +294,22 @@ footer {
 .ft-ci__class{
     width: 10.4rem;
 }
-.ft-ci__corp{
+.ft-ci__corp { /* 1207 zoe 수정 */
+    position: relative;
     width: 14.95rem;
+}
+[class^="ft-ci-corplink__"] { /* 1207 zoe 추가 */
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+.ft-ci-corplink__lt { /* 1207 zoe 추가 */
+    left: 0;
+    width: 34.11%;
+}
+.ft-ci-corplink__rt { /* 1207 zoe 추가 */
+    right: 0;
+    width: 49.16%;
 }
 .ft-txt__info {
     padding-left: 4.5rem;

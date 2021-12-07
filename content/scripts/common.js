@@ -61,6 +61,14 @@ function tglNav() {
         $("body").toggleClass("full");
         $("#tglNav").fadeToggle(150).toggleClass("active");
     });
+
+    $("#tglNav").on("click", function (e) { //1207 zoe 추가
+        if (!$(e.target).closest("tgl-nav").length) {
+            $("html").removeClass("full");
+            hdTglBtn.removeClass("active");
+            $(this).fadeOut(150).removeClass("active");
+        }
+    });
 }
 
 //open modal event
@@ -238,6 +246,12 @@ function faq() {
     });
 }
 
+//main load (1207 zoe 추가)
+function mainLoad() {
+    $(window).load(function(){
+        $("main").delay(150).css('opacity', '1');
+    });
+}
 //main parallax event
 function mainParallax() {
 
